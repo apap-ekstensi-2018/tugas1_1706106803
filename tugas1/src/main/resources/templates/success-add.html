@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>Penambahan Data Mahasiswa</title>
+	</head>
+	<body>
+    <div th:replace="fragments/fragment :: header"></div>
+		<div class="form-control">
+			<h2>Data berhasil ditambahkan</h2>
+		</div>
+		<div>
+			<h6 th:text="'Mahasiswa dengan NPM '+ ${mahasiswa.npm} + ' berhasil ditambah'"></h6>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>NPM Mahasiswa tidak ditemukan</title>
+    </head>
+    <div th:replace="fragments/fragment :: header"></div>
+    <body>
+    	<div class="form-control">
+			<h2>Informasi Mahasiswa tidak ditemukan</h2>
+		</div>
+		<div class="form-control">
+			<h6 th:text="'NPM = ' + ${npm}">NPM Mahasiswa</h6>
+		</div>
+    </body>
+</html>

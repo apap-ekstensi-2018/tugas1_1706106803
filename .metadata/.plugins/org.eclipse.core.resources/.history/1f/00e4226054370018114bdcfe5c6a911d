@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Presentase Kelulusan</title>
+        <script src="/DataTables/jquery-1.12.4.js"></script>
+        <link rel="stylesheet" href="/DataTables/DataTables-1.10.16/css/jquery.dataTables.css" />
+        <script type="text/javascript" src="/DataTables/DataTables-1.10.16/js/jquery.dataTables.js"></script>
+    	<link id="bs-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    	<link id="bsdp-css" href="https://uxsolutions.github.io/bootstrap-datepicker/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+    	<script>
+	    	$('#sandbox-container input').datepicker({
+	    	    format: "dd/mm/yy"
+	    	});
+    	</script>
+    </head>
+    <div th:replace="fragments/fragment :: header"></div>
+    <body>
+    	<h3 class="page-header col-8" th:text="'Presentase Kelulusan'"></h3>
+       	<table class="table display dataTable" id="example" role="grid" >
+      		<tbody>
+				<tr>
+	    			<th>Tahun</th>
+	    			<td th:text="${mahasiswa.tahun_masuk}"></td>
+	    		</tr>
+	    		<tr>
+	    			<th>Program Studi</th>
+	    			<td th:text="${mahasiswa.nama_prodi}"></td>
+	    		</tr>
+	    		<tr>
+	    			<th>Fakultas</th>
+	    			<td th:text="${mahasiswa.nama_fakultas}"></td>
+	    		</tr>
+	    		<tr>
+	    			<th>Universitas</th>
+	    			<td th:text="${mahasiswa.nama_univ}"></td>
+	    		</tr>
+	    		<tr>
+	    			<th>Persentase kelulusan</th>
+	    			<td th:text="${mahasiswa.lulus} + ' dari ' + ${mahasiswa.total} + ' Mahasiswa Telah Lulus'"></td>
+	    		</tr>
+	    	</tbody>
+       	</table>
+    </body>
+</html>

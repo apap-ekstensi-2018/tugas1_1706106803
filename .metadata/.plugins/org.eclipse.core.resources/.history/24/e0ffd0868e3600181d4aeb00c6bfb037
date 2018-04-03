@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Lihat Data Mahasiswa Berdasarkan NPM</title>
+    </head>
+    <div th:replace="fragments/fragment :: header"></div>
+    <body>
+       	<div class="form-group blu-margin">
+		    <select class="form-control" th:field="${univ.univId}"  id="dropUniv">
+		    <option value="0" th:text="--Pilih Universitas--" ></option>
+		    <option th:each="operator : ${operators}" th:value="${operator.id}" th:text="${operator.operatorName}"></option>
+		    </select>
+		</div>
+    </body>
+</html>
+

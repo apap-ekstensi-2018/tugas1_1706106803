@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Presentase Kelulusan</title>
+        <script src="/DataTables/jquery-1.12.4.js"></script>
+        <link rel="stylesheet" href="/DataTables/DataTables-1.10.16/css/jquery.dataTables.css" />
+        <script type="text/javascript" src="/DataTables/DataTables-1.10.16/js/jquery.dataTables.js"></script>
+    </head>
+    <div th:replace="fragments/fragment :: header"></div>
+    <body>
+    	<h3 class="page-header col-8" th:text="'Presentase Kelulusan'"></h3>
+       	<table class="table display dataTable" id="example" role="grid" >
+      		<tbody>
+				<tr>
+	    			<th>Tahun</th>
+	    			<td th:text="${mahasiswa.tahun}"></td>
+	    		</tr>
+	    		<tr>
+	    			<th>Tempat/Tanggal Lahir</th>
+	    			<td th:text="${mahasiswa.tempat_lahir} + '/' + ${mahasiswa.tanggal_lahir}"></td>
+	    		</tr>
+	    		<tr>
+	    			<th>Program Studi</th>
+	    			<td th:text="${mahasiswa.nama_prodi}"></td>
+	    		</tr>
+	    		<tr>
+	    			<th>Fakultas</th>
+	    			<td th:text="${mahasiswa.nama_fakultas}"></td>
+	    		</tr>
+	    		<tr>
+	    			<th>Universitas</th>
+	    			<td th:text="${mahasiswa.nama_univ}"></td>
+	    		</tr>
+	    	</tbody>
+       	</table>
+       	<script>
+		    $(document).ready(function() {
+		    	$('#example').DataTable({
+			        "info":     false
+			    	});
+		    } );
+	    </script>
+    </body>
+</html>

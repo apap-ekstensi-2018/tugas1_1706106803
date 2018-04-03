@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Lihat Data Mahasiswa Berdasarkan NPM</title>
+    </head>
+    <body>
+
+   		<h3 th:text="Mahasiswa">Status Mahasiswa</h3>
+     </body>
+</html>
+

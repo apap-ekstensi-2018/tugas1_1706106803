@@ -1,0 +1,17 @@
+package com.tugas1.service;
+
+import java.util.List;
+
+import com.tugas1.model.FakultasModel;
+import com.tugas1.model.MahasiswaModel;
+import com.tugas1.model.ProgramStudiModel;
+import com.tugas1.model.UniversitasModel;
+
+public interface MahasiswaService {
+	MahasiswaModel selectMahasiswa (String npm);
+    List<UniversitasModel> selectUniversitas ();
+    List<FakultasModel> selectFakultas (String id_univ);
+    List<ProgramStudiModel> selectProgramStudi (String id_univ,String id_fakultas);
+    List<MahasiswaModel> selectAllMahasiswa2 (String id_univ, String id_fakultas, String id_prodi);
+    void updateMahasiswa(MahasiswaModel mahasiswa);
+}

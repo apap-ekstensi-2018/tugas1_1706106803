@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Lihat Universitas</title>
+        <script type="text/javascript" src="/DataTables/jquery-1.12.4.js"></script>
+    </head>
+    <div th:replace="fragments/fragment :: header"></div>
+    <body>
+       	<div class="form-group blu-margin">
+		    <select class="form-control" th:field="${university.universityId}"  id="dropUniversity">
+		    <option value="0" th:text="--Pilih Universitas--" ></option>
+		    <option th:each="university : ${universities}" th:value="${university.id}" th:text="${university.nama_univ}"></option>
+		    </select>
+		</div>
+		<script>
+		    $(document).ready(function() {
+		    	function() {
+		    		$.getJSON('${cariUniversitas}', {
+		    			ajax : 'true'
+		    		}, function(data) {
+		    			var html = '<option value="">--Pilih Universitas--</option>';
+		    			var len = data.length;
+		    			for ( var i = 0; i < len; i++) {
+		    				html += '<option value="' + data[i].name + '">'
+		    						+ data[i].name + '</option>';
+		    			}
+		    			html += '</option>';
+		                            //now that we have our options, give them to our select
+		    			$('#usStates').html(html);
+		    		});
+		    } );
+	    </script>
+    </body>
+</html>
+

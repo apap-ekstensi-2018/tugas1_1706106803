@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Lihat Universitas</title>
+    </head>
+    <div th:replace="fragments/fragment :: header"></div>
+    <body>
+   		<h3 class="page-header col-6">Cari Mahasiswa</h3>
+		<form action="/mahasiswa/cari" method="GET" >
+	       	<div class="form-group">
+		       	<div class="col-6">
+					<label for="universitas">Universitas</label>
+				</div>
+				<div class="col-4">
+					<select class="form-control" required="required" id="id_univ" readonly="true" name="univ">
+					<option th:each="faculty : ${fakultas}" th:value="${faculty.id_univ}" th:text="${faculty.nama_univ}"></option>
+					<option></option>
+				    </select>
+			    </div>
+			    <br>
+			    <div class="col-6">
+					<label for="Fakultas">Fakultas</label>
+				</div>
+			    <div class="col-6">
+					<select class="form-control" required="required" id="id_fakultas" name="fakultas">
+					<option disabled="disabled" selected="selected">--Pilih Fakultas--</option>
+				    <option th:each="faculty : ${fakultas}" th:value="${faculty.id}" th:text="${faculty.nama_fakultas}"></option>
+				    </select>
+			    </div>
+			    <br>
+			    <div class="col-6">
+				<button type="submit" class="btn btn-warning">Cari</button>
+				</div>
+			</div>
+		</form>
+    </body>
+</html>
+
+

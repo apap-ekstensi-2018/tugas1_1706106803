@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Lihat Universitas</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    </head>
+    <div th:replace="fragments/fragment :: header"></div>
+    <body>
+		<h5 th:text="'NPM : '">NPM Mahasiswa</h5>
+    </body>
+</html>
+

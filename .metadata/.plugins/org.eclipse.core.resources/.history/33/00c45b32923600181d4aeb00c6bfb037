@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Lihat Universitas</title>
+        <script type="text/javascript" src="/DataTables/jquery-1.12.4.js"></script>
+    </head>
+    <div th:replace="fragments/fragment :: header"></div>
+    <body>
+       	<div class="form-group blu-margin">
+		    <select class="form-control" th:field="${university.universityId}"  id="dropUniversity">
+		    <option value="0" th:text="--Pilih Universitas--" ></option>
+		    <option th:each="university : ${universities}" th:value="${university.id}" th:text="${university.nama_univ}"></option>
+		    </select>
+		</div>
+    </body>
+</html>
+

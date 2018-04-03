@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Presentase Kelulusan</title>
+        <script src="/DataTables/jquery-1.12.4.js"></script>
+        <link rel="stylesheet" href="/DataTables/DataTables-1.10.16/css/jquery.dataTables.css" />
+        <script type="text/javascript" src="/DataTables/DataTables-1.10.16/js/jquery.dataTables.js"></script>
+    </head>
+    <div th:replace="fragments/fragment :: header"></div>
+    <body>
+    	<h3 class="page-header col-8" th:text="'Presentase Kelulusan'"></h3>
+       	<table class="table display dataTable" id="example" role="grid" >
+       		<thead class="thead-dark">
+	       		<tr role="row">
+	       			<th style="width:30px;">No</th>
+	       			<th style="width:70px;">NPM</th>
+	       			<th style="width:160px;">Nama</th>
+	       			<th style="width:120px;">Program Studi</th>
+	       		</tr>
+	       	</thead>	
+       		<tbody>
+   				<tr th:each="mahasiswa,iterationStatus: ${mahasiswa2}">
+   					<td th:text="${iterationStatus.count}"></td>
+   					<td th:text="${mahasiswa.npm}"></td>
+   					<td th:text="${mahasiswa.nama}"></td>
+   					<td th:text="${mahasiswa.nama_prodi}"></td>
+   					<td th:text="${mahasiswa.tahun_masuk}"></td>
+   					<td th:text="${mahasiswa.jalur_masuk}"></td>
+   					<td><a th:href="'/mahasiswa?npm=' + ${mahasiswa.npm}">Lihat Detail</a></td>
+   				</tr>
+       	</table>
+       	<script>
+		    $(document).ready(function() {
+		    	$('#example').DataTable({
+			        "info":     false
+			    	});
+		    } );
+	    </script>
+    </body>
+</html>

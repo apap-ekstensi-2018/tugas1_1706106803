@@ -1,0 +1,6 @@
+1522684953019	Delete element
+1522756604117	Rename package 'com.example.service'
+1522756618297	Rename package 'com.example.model'
+1522756633161	Rename package 'com.example.controller'
+1522756679299	Rename package 'com.example.dao'
+1522760476615	Move 'success-add.html' to 'templates'

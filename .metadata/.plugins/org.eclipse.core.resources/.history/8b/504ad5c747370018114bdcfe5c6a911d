@@ -1,0 +1,105 @@
+package com.tugas1.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
+import com.tugas1.model.FakultasModel;
+import com.tugas1.model.MahasiswaModel;
+import com.tugas1.model.ProgramStudiModel;
+import com.tugas1.model.UniversitasModel;
+
+@Mapper
+public interface KemahasiswaanMapper {
+	@Select ("SELECT npm"
+			+ ",nama"
+			+ ",tempat_lahir"
+			+ ",tanggal_lahir"
+			+ ",nama_prodi"
+			+ ",id_prodi"
+			+ ",nama_fakultas"
+			+ ",nama_univ"
+			+ ",jenis_kelamin"
+			+ ",agama"
+			+ ",golongan_darah"
+			+ ",tahun_masuk"
+			+ ",jalur_masuk"
+			+ ",status "
+			+ "FROM mahasiswa "
+			+ "INNER JOIN Program_Studi ON mahasiswa.id_prodi = Program_Studi.id "
+			+ "INNER JOIN Fakultas on Program_Studi.id_fakultas=Fakultas.id "
+			+ "INNER JOIN Universitas ON Fakultas.id_univ = Universitas.id where npm=#{npm}")
+	MahasiswaModel selectMahasiswa(@Param("npm") String npm);
+
+	@Select("SELECT npm"
+			+ ",nama"
+			+ ",nama_prodi"
+			+ ",tahun_masuk"
+			+ ",jalur_masuk "
+			+ "FROM mahasiswa "
+			+ "INNER JOIN Program_Studi ON mahasiswa.id_prodi = Program_Studi.id "
+			+ "INNER JOIN Fakultas on Program_Studi.id_fakultas=Fakultas.id "
+			+ "INNER JOIN Universitas ON Fakultas.id_univ = Universitas.id "
+			+ "WHERE id_univ=#{id_univ} "
+			+ "AND id_prodi=#{id_prodi} "
+			+ "AND id_fakultas=#{id_fakultas}")
+    List<MahasiswaModel> selectAllMahasiswa2 (@Param("id_univ") String id_univ, @Param("id_fakultas") String id_fakultas, @Param("id_prodi") String id_prodi);
+	
+	@Select ("SELECT * FROM universitas")
+	List<UniversitasModel> selectUniversitas();
+	
+	@Select ("SELECT id_univ"
+			+ ",nama_univ"
+			+ ",fakultas.id"
+			+ ",nama_fakultas "
+			+ "FROM fakultas "
+			+ "INNER JOIN universitas on fakultas.id_univ = universitas.id "
+			+ "WHERE id_univ=#{id_univ}")
+	List<FakultasModel> selectFakultas(@Param("id_univ") String id_univ);
+	
+	@Select ("SELECT id_univ "
+			+ ",nama_univ "
+			+ ",id_fakultas "
+			+ ",nama_fakultas "
+			+ ",program_studi.id "
+			+ ",nama_prodi "
+			+ "FROM program_studi "
+			+ "INNER JOIN fakultas ON program_studi.id_fakultas = fakultas.id "
+			+ "INNER JOIN universitas ON fakultas.id_univ=universitas.id "
+			+ "WHERE id_univ=#{id_univ} "
+			+ "AND id_fakultas=#{id_fakultas} ")
+	List<ProgramStudiModel> selectProgramStudi(@Param("id_univ") String id_univ, @Param("id_fakultas") String id_fakultas);
+	
+	@Insert("INSERT INTO mahasiswa (npm, nama,tempat_lahir,tanggal_lahir,jenis_kelamin,agama,golongan_darah,status,tahun_masuk,jalur_masuk,id_prodi) "
+			+ "VALUES (#{npm}, #{nama}, #{tempat_lahir}, #{tanggal_lahir}, #{jenis_kelamin}, #{agama}, #{golongan_darah}, 'Aktif', #{tahun_masuk}, #{jalur_masuk}, #{id_prodi})")
+    void insertMahasiswa (MahasiswaModel mahasiswa);
+	
+	@Update("UPDATE mahasiswa SET nama = #{nama} "
+			+ ",tempat_lahir = #{tempat_lahir} "
+			+ ",jenis_kelamin = #{jenis_kelamin} "
+			+ ",agama = #{agama} "
+			+ ",golongan_darah = #{golongan_darah} "
+			+ ",tahun_masuk = #{tahun_masuk} "
+			+ ",jalur_masuk = #{jalur_masuk} "
+			+ ",id_prodi = #{id_prodi}  "
+			+ "WHERE npm = #{npm}")
+    void updateMahasiswa (MahasiswaModel mahasiswa);
+	
+	Select ("SELECT id_univ "
+			+ ",nama_univ "
+			+ ",id_fakultas "
+			+ ",nama_fakultas "
+			+ ",program_studi.id "
+			+ ",nama_prodi "
+			+ "FROM program_studi "
+			+ "INNER JOIN fakultas ON program_studi.id_fakultas = fakultas.id "
+			+ "INNER JOIN universitas ON fakultas.id_univ=universitas.id "
+			+ "WHERE id_univ=#{id_univ} "
+			+ "AND id_fakultas=#{id_fakultas} ")
+	List<MahasiswaModel> selectPresentase(@Param("tahun_masuk") String tahun_masuk, @Param("id_prodi") String id_prodi);
+	
+}

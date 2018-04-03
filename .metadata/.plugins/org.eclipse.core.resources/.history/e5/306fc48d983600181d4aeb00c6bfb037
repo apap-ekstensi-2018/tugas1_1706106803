@@ -1,0 +1,56 @@
+package com.example.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.model.MahasiswaModel;
+import com.example.model.UniversitasModel;
+import com.example.service.MahasiswaService;
+@Controller
+public class MahasiswaController {
+	
+	@Autowired
+	MahasiswaService mahasiswaDAO;
+    
+	@RequestMapping("/")
+    public String index (Model model)
+    {
+		return "index";
+    }
+	
+	@RequestMapping(value="/mahasiswa/view", method=RequestMethod.GET)
+	public String view (Model model, @RequestParam(value="npm", required=false) String npm)
+	{
+		MahasiswaModel mahasiswa = mahasiswaDAO.selectMahasiswa(npm);
+		
+		if (mahasiswa != null){
+			model.addAttribute ("mahasiswa", mahasiswa);
+			return "view";	
+		}else{
+			model.addAttribute ("npm",npm);
+			return "not-found";
+		}
+	}
+	
+	@RequestMapping (value="mahasiswa/cari", method=RequestMethod.GET)
+	public String searchUniPath (Model model)
+	{
+		return "cari";
+	}
+	
+    @RequestMapping("/student/viewall")
+    public String view (Model model)
+    {
+        List<MahasiswaModel> mahasiswa2 = mahasiswaDAO.selectAllMahasiswa2 ();
+        model.addAttribute ("mahasiswa2", mahasiswa2);
+        return "viewall";
+    }
+	
+}

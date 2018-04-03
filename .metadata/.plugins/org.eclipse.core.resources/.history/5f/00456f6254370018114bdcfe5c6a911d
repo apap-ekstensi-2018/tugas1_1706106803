@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Presentase Kelulusan</title>    </head>
+    <div th:replace="fragments/fragment :: header"></div>
+    <body>
+    	<h3 class="page-header col-8" th:text="'Presentase Kelulusan'"></h3>
+       	<table class="table display dataTable" id="example" role="grid" >
+      		<tbody>
+				<tr>
+	    			<th>Tahun</th>
+	    			<td th:text="${mahasiswa.tahun_masuk}"></td>
+	    		</tr>
+	    		<tr>
+	    			<th>Program Studi</th>
+	    			<td th:text="${mahasiswa.nama_prodi}"></td>
+	    		</tr>
+	    		<tr>
+	    			<th>Fakultas</th>
+	    			<td th:text="${mahasiswa.nama_fakultas}"></td>
+	    		</tr>
+	    		<tr>
+	    			<th>Universitas</th>
+	    			<td th:text="${mahasiswa.nama_univ}"></td>
+	    		</tr>
+	    		<tr>
+	    			<th>Persentase kelulusan</th>
+	    			<td th:text="${mahasiswa.lulus} + ' dari ' + ${mahasiswa.total} + ' Mahasiswa Telah Lulus'"></td>
+	    		</tr>
+	    	</tbody>
+       	</table>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Lihat Data Mahasiswa Berdasarkan NPM</title>
+    </head>
+    <body>
+       	<h3 th:text="'NPM : ' + ${mahasiswa.npm}">NPM Mahasiswa</h3>
+       	<h3 th:text="'Nama : ' + ${mahasiswa.nama}">Nama Mahasiswa</h3>
+       	<h3 th:text="'Tempat : ' + ${mahasiswa.tempat_lahir} + '/Tanggal Lahir :' + ${mahasiswa.tanggal_lahir}">Tempat/Tanggal Lahir Mahasiswa</h3>
+       	<h3 th:text="'Program Studi :' + ${mahasiswa.nama_prodi}">Program Studi Mahasiswa</h3>
+       	<h3 th:text="'Fakultas :' + ${mahasiswa.nama_fakultas}">Fakultas Mahasiswa</h3>
+       	<h3 th:text="'Universitas :' + ${mahasiswa.nama_univ}">Universitas Mahasiswa</h3>
+       	<h3 th:text="'Jenis Kelamin :' + ${mahasiswa.jenis_kelamin}">Jenis Kelamin Mahasiswa</h3>
+       	<h3 th:text="'Agama :' + ${mahasiswa.agama}">Agama Mahasiswa</h3>
+       	<h3 th:text="'Golongan Darah :' + ${mahasiswa.golongan_darah}">Golongan Darah Mahasiswa</h3>
+       	<h3 th:text="'Tahun Masuk :' + ${mahasiswa.tahun_masuk}">Tahun Masuk Mahasiswa</h3>
+       	<h3 th:text="'Jalur Masuk :' + ${mahasiswa.jalur_masuk}">Jalur Masuk Mahasiswa</h3>
+       	<h3 th:text="'Status :' + ${mahasiswa.status}">Status Mahasiswa</h3>
+    </body>
+</html>
+

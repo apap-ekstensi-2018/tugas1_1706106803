@@ -1,0 +1,30 @@
+package com.example.model;
+import lombok.NoArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
+public class UniversitasModel {
+	private int id;
+	private String kode_univ;
+	private String nama_univ;
+}
+
+@Entity
+@Table(name="operator")
+public class UniversitasModel{
+	@kode_univ
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="kode_univ")
+	@JsonIgnore
+	private int kode_univ;
+	
+	@Column(name = "nama_univ",nullable=false)
+	private String nama_univ;
+}

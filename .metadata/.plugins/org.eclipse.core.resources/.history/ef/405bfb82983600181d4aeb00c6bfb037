@@ -1,0 +1,31 @@
+package com.example.service;
+
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.dao.KemahasiswaanMapper;
+import com.example.model.MahasiswaModel;
+
+@Slf4j
+@Service
+public class MahasiswaServiceDatabase implements MahasiswaService{
+	@Autowired
+	private KemahasiswaanMapper mhsMapper;
+	
+	@Override
+	public MahasiswaModel selectMahasiswa (String npm){
+		log.info ("Lihat data mahasiswa dengan NPM : {}", npm);
+			return mhsMapper.selectMahasiswa(npm);
+	}
+	
+	@Override
+    public List<MahasiswaModel> selectAllMahasiswa2 ()
+    {
+        log.info ("Tampilkan data mahasiswa");
+        return mhsMapper.selectAllMahasiswa2 ();
+    }
+}
